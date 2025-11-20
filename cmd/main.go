@@ -6,5 +6,7 @@ func main() {
 		db:   dbConfig{},
 	}
 
-	api := application{}
+	api := application{
+		config: cfg
+	}
 }
