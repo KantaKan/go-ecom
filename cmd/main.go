@@ -1,5 +1,10 @@
 package main
 
+import (
+	"log"
+	"os"
+)
+
 func main() {
 	cfg := config{
 		addr: ":8080",
@@ -7,6 +12,11 @@ func main() {
 	}
 
 	api := application{
-		config: cfg
+		config: cfg,
+	}
+
+	if err := api.run(api.mount()); err != nil {
+		log.Printf("Server failed to start ,err : %s", err)
+		os.Exit(1)
 	}
 }
