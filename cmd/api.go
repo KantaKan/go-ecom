@@ -28,8 +28,8 @@ func (app *application) mount() http.Handler {
 	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("all good"))
 	})
-
-	productHandler := products.NewHandler(nil)
+	productsService := products.NewService()
+	productHandler := products.NewHandler(productsService)
 	r.Get("/products", productHandler.ListProducts)
 
 	return r
