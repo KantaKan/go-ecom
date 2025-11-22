@@ -14,6 +14,8 @@ func NewHandler(service Service) *handler {
 }
 
 func (h *handler) ListProducts(w http.ResponseWriter, r *http.Request) {
-	products := []string{"hello", "world"}
-	json.NewEncoder(w).Encode(products)
+	products := struct {
+		Products []string `json:"products"`
+	}{}
+
 }
